@@ -1,0 +1,27 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "layoutChallenge",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:css": "npx tailwindcss -i ./src/css/style.css -o ./dist/css/style.css",
+    "watch:css": "onchange \"src/css\" -- npm run build:css",
+    "build:html": "html-includes --src src --dest dist --minify",
+    "watch:html": "onchange \"src\" -- npm run build:html",
+    "serve": "browser-sync start --config browser-sync.js",
+    "start": "npm run clean && npm run build:css  && npm run build:html &&  concurrently \"npm run watch:html\"  \"npm run watch:css\"  \"npm run serve\""
+  },
+  "author": "Swati",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.2",
+    "browser-sync": "^2.27.7",
+    "concurrently": "^7.0.0",
+    "copyfiles": "^2.4.1",
+    "html-includes": "^4.4.1",
+    "onchange": "^7.1.0",
+    "rimraf": "^3.0.2",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^3.1.6"
+  }
+}
